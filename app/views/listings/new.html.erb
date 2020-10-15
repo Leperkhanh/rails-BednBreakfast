@@ -32,6 +32,18 @@
     </p>
 
     <p>
+        <%= f.label :category_id, "Category" %>
+        <%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => true %>
+
+        or create a new category here: 
+
+        <%= f.fields_for :category do |cat_fields| %>
+            <%= cat_fields.label :name %>
+            <%= cat_fields.text_field :name %>
+        <% end %>
+    </p>
+
+    <p>
         <%= f.submit "Create Listing" %>
     </p>
 
