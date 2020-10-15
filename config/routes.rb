@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'category/index'
+  get 'category/show'
+  get 'category/new'
+  get 'category/create'
   root to: 'static#home'
   get 'static/home'
   devise_for :users
