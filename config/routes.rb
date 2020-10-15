@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'listings/index'
+  get 'listings/show'
+  get 'listings/new'
+  get 'listings/create'
+  get 'listings/edit'
+  get 'listings/destroy'
   get 'category/index'
   get 'category/show'
   get 'category/new'
