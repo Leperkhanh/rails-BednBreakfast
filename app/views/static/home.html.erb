@@ -11,3 +11,9 @@
 <p>Click here to Log Out</p>
 
 <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+
+<% if user_signed_in?%>
+    <p>My Account</p>
+
+    <%= link_to 'My Account', user_path(current_user) %>
+<% end %>    
