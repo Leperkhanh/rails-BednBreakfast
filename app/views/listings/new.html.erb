@@ -2,6 +2,11 @@
 
 <%= form_for @listing do |f| %>
     <p>
+        <%= f.label :title, "Title" %>
+        <%= f.text_field :title %>
+    </p>
+
+    <p>
         <%= f.label :price, "Price/night" %>
         <%= f.number_field :price %>
     </p>
