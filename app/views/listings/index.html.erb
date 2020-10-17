@@ -1,7 +1,19 @@
-<h1>All Current Listings</h1>
+<div class="container text-center mt-5 mb-3">
+    <h1>All Current Listings</h1>
+</div>
 
 <div>
     <% @listings.each do | listing | %>
-        <%= link_to listing.title, listing_path(listing) %>
+        <div class="container" style="width 75%;">
+            <div class="card" style="width: 100%;">
+                <img class="card-img-top" src="https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title alight-center"><%= link_to listing.title, listing_path(listing) %></h5>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
     <% end %>
 </div>
+
