@@ -1,7 +1,12 @@
 class ListingsController < ApplicationController
 
   def new
-    @listing = Listing.new
+    if user_signed_in?
+      @listing = Listing.new
+    else
+      flash[:notice] = "You must be logged in to create a new listing!" 
+       redirect_to root_path
+    end
   end
 
   def create

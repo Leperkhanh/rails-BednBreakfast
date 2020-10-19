@@ -1,4 +1,7 @@
-<%= render 'notice' %>
+<% if notice.present? %>
+  <%= render 'notice' %>
+<% end %>
+
 
 <div class="view" style="background-image: url('https://images.unsplash.com/photo-1554437041-409483d54614?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1237&q=80'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
             <!-- Mask & flexbox options-->
@@ -7,9 +10,6 @@
               <div class="container">
                 <!--Grid row-->
                 <div class="row">
-                  <!--Grid column-->
-                  <!--Grid column-->
-                  <!--Grid column-->
                   
                   <!--Grid column-->
                 </div>
