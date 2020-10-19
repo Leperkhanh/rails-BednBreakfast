@@ -29,7 +29,7 @@ class ListingsController < ApplicationController
       if @listing.user == current_user 
         render 'edit'
       else
-        flash[:error] = "You do not have permission to edit this listing"
+        flash[:alert] = "#{@listing.errors}"
         redirect_to root_path        
       end
   end
