@@ -57,14 +57,20 @@ class ListingsController < ApplicationController
   end
   
   def destroy
-    @listing = Object.find_by(id: params[:id])
-    if @listing.destroy
-      flash[:success] = 'Listing was successfully deleted.'
-      redirect_to listings_path
+    if @listing.user == current_user
+      @listing = Object.find_by(id: params[:id])
+      @listing.destroy
+        if @listing.destroy
+          flash[:success] = 'Listing was successfully deleted.'
+          redirect_to listings_path
+        else
+          flash[:error] = 'Listing was not deleted'
+          redirect_to listing_path(@listing)
     else
-      flash[:error] = 'Something went wrong'
-      redirect_to listing_path(@listing)
+      flash[:alert] = "You do not have permission to delete this post"
+      redirect_to root_path         
     end
+
   end
   
 
