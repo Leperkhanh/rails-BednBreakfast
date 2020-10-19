@@ -1,0 +1,60 @@
+<h2>Create a New Listing</h2>
+
+<%= form_for @listing do |f| %>
+    <p>
+        <%= f.label :title, "Title" %>
+        <%= f.text_field :title %>
+    </p>
+
+    <p>
+        <%= f.label :description, "Description" %>
+        <%= f.text_area :description %>
+    </p>
+
+    <p>
+        <%= f.label :price, "Price/night" %>
+        <%= f.number_field :price %>
+    </p>
+
+    <p>
+        <%= f.label :bedroom, "Number of Bedrooms" %>
+        <%= f.text_field :bedroom %>
+    </p>
+    
+    <p>
+        <%= f.label :bathroom, "Number of Bathrooms" %>
+        <%= f.text_field :bathroom %>
+    </p>
+    
+    <p>
+        <%= f.label :address, "Street Address" %>
+        <%= f.text_field :address %>
+    </p>
+    
+    <p>
+        <%= f.label :city, "City" %>
+        <%= f.text_field :city %>
+    </p>
+    
+    <p>
+        <%= f.label :state, "State" %>
+        <%= f.text_field :state %>
+    </p>
+
+    <p>
+        <%= f.label :category_id, "Category" %>
+        <%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => true %>
+
+        or create a new category here: 
+
+        <%= f.fields_for :category do |cat_fields| %>
+            <%= cat_fields.label :name %>
+            <%= cat_fields.text_field :name %>
+        <% end %>
+    </p>
+
+    <p>
+        <%= f.submit @listing.persisted? ? 'Update Listing' : 'Create Listing' %>
+    </p>
+
+<% end %>
