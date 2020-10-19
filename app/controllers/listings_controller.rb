@@ -27,6 +27,11 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find_by(id: params[:id])
+    if @listing 
+      render 'show'
+    else
+      redirect_to root_path    
+    end
   end
 
   def edit
