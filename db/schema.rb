@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_194518) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "listing_id"
-    t.integer "host_id"
+    t.integer "user_id"
     t.integer "guest_id"
     t.string "comments"
     t.datetime "created_at", precision: 6, null: false
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 2020_10_19_194518) do
     t.string "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "host", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
