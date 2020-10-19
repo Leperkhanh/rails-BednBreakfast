@@ -13,4 +13,8 @@ class Listing < ApplicationRecord
     def host_email
         self.user.email
     end 
+
+    def user_id
+        self.user.id
+    end
 end

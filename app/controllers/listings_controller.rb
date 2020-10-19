@@ -26,6 +26,12 @@ class ListingsController < ApplicationController
 
   def edit
     @listing = Listing.find_by(id: params[:id])
+      if @listing.user == current_user 
+        render 'edit'
+      else
+        flash[:error] = "You do not have permission to edit this listing"
+        redirect_to root_path        
+      end
   end
   
 
