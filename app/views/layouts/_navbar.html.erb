@@ -20,22 +20,30 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
-        <% if !user_signed_in? %>
-            <li class="nav-item">
-                <%= link_to 'Sign Up', new_user_registration_path, class:"nav-link" %>
-            </li>
-            <li class="nav-item">
-                <%= link_to 'Sign In', new_user_session_path, class:"nav-link"  %>
-            </li>    
-        <% end %>
-        <% if user_signed_in? %>
+        <% if user_signed_in?%>
             <li class="nav-item">
                 <%= link_to 'My Account', user_path(current_user), class:"nav-link" %>
             </li>
             <li class="nav-item">
                 <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:"nav-link" %>
             </li>
-        <% end %>
+        <% elsif guest_signed_in? %>
+          <li class="nav-item">
+                <%= link_to 'My Account', guest_path(current_guest), class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Logout', destroy_guest_session_path, method: :delete, class:"nav-link" %>
+            </li>
+        <% else %>
+          <% if !user_signed_in?%>
+            <li class="nav-item">
+                <%= link_to 'Sign Up', static_signup_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Sign In', static_signin_path, class:"nav-link"  %>
+            </li>    
+        <% end %>    
+        <% end %>  
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search Listings" aria-label="Search">

@@ -6,8 +6,12 @@ Rails.application.routes.draw do
   get 'category/create'
   root to: 'static#home'
   get 'static/home'
+  get 'static/signin'
+  get 'static/signup'
   devise_for :users
+  devise_for :guests
   resources :users, only: [:index, :show] 
+  resources :guests, only: [:index, :show] 
   resources :listings
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
