@@ -12,10 +12,10 @@ class ListingsController < ApplicationController
   def create
     @listing = current_user.listings.build(listing_params)
     if @listing.save
-      flash[:success] = "Listing successfully created"
+      flash[:notice] = "Listing successfully created"
       redirect_to @listing
     else
-      flash[:error] = "Something went wrong"
+      flash[:alert] = "Listing was not created"
       render 'new'
     end
   end
@@ -41,14 +41,19 @@ class ListingsController < ApplicationController
   
 
   def update
-    @listing = Listing.find(params[:id])
-      if @listing.update_attributes(listing_params)
-        flash[:success] = "Listing was successfully updated"
-        redirect_to @listing
-      else
-        flash[:error] = "Something went wrong"
-        render 'edit'
-      end
+    if @listing.user == current_user
+      @listing = Listing.find(params[:id])
+        if @listing.update_attributes(listing_params)
+          flash[:success] = "Listing was successfully updated"
+          redirect_to @listing
+        else
+          flash[:error] = "Listing was not updated!"
+          render 'edit'
+        end
+    else 
+      flash[:error] = "You do not have permission to edit this listing"
+      redirect_to root_path     
+    end
   end
   
   def destroy
