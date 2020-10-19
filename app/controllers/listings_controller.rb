@@ -41,8 +41,8 @@ class ListingsController < ApplicationController
   
 
   def update
-    if @listing.user == current_user
       @listing = Listing.find(params[:id])
+      if @listing.user == current_user
         if @listing.update_attributes(listing_params)
           flash[:success] = "Listing was successfully updated"
           redirect_to @listing
@@ -50,15 +50,15 @@ class ListingsController < ApplicationController
           flash[:error] = "Listing was not updated!"
           render 'edit'
         end
-    else 
-      flash[:error] = "You do not have permission to edit this listing"
-      redirect_to root_path     
-    end
+      else 
+        flash[:error] = "You do not have permission to edit this listing"
+        redirect_to root_path     
+      end
   end
   
   def destroy
-    if @listing.user == current_user
-      @listing = Object.find_by(id: params[:id])
+      @listing = Listing.find_by(id: params[:id])
+      if @listing.user == current_user
       @listing.destroy
         if @listing.destroy
           flash[:success] = 'Listing was successfully deleted.'
