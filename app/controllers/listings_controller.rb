@@ -66,6 +66,7 @@ class ListingsController < ApplicationController
         else
           flash[:error] = 'Listing was not deleted'
           redirect_to listing_path(@listing)
+        end  
     else
       flash[:alert] = "You do not have permission to delete this post"
       redirect_to root_path         
