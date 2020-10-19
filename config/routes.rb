@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bookings
   get 'category/index'
   get 'category/show'
   get 'category/new'
