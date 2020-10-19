@@ -40,10 +40,17 @@ class ListingsController < ApplicationController
       end
   end
   
-  
-
   def destroy
+    @listing = Object.find_by(id: params[:id])
+    if @listing.destroy
+      flash[:success] = 'Listing was successfully deleted.'
+      redirect_to listings_path
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to listing_path(@listing)
+    end
   end
+  
 
   private
 
