@@ -27,8 +27,17 @@ class ListingsController < ApplicationController
   def edit
   end
 
-  def update 
-  end  
+  def update
+    @listing = Object.find(params[:id])
+      if @listing.update_attributes(listing_params)
+        flash[:success] = "Listing was successfully updated"
+        redirect_to @listing
+      else
+        flash[:error] = "Something went wrong"
+        render 'edit'
+      end
+  end
+  
   
 
   def destroy
