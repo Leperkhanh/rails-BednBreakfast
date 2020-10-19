@@ -34,7 +34,7 @@ class ListingsController < ApplicationController
       if @listing.user == current_user 
         render 'edit'
       else
-        flash[:alert] = "#{@listing.errors}"
+        flash[:alert] = "You do not have permission to edit this listing!"
         redirect_to root_path        
       end
   end
@@ -44,14 +44,14 @@ class ListingsController < ApplicationController
       @listing = Listing.find(params[:id])
       if @listing.user == current_user
         if @listing.update_attributes(listing_params)
-          flash[:success] = "Listing was successfully updated"
+          flash[:notice] = "Listing was successfully updated"
           redirect_to @listing
         else
-          flash[:error] = "Listing was not updated!"
+          flash[:alert] = "Listing was not updated!"
           render 'edit'
         end
       else 
-        flash[:error] = "You do not have permission to edit this listing"
+        flash[:alert] = "You do not have permission to edit this listing"
         redirect_to root_path     
       end
   end
@@ -61,10 +61,10 @@ class ListingsController < ApplicationController
       if @listing.user == current_user
       @listing.destroy
         if @listing.destroy
-          flash[:success] = 'Listing was successfully deleted.'
+          flash[:notice] = 'Listing was successfully deleted.'
           redirect_to listings_path
         else
-          flash[:error] = 'Listing was not deleted'
+          flash[:alert] = 'Listing was not deleted'
           redirect_to listing_path(@listing)
         end  
     else
