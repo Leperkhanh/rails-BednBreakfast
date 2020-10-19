@@ -15,3 +15,6 @@ darrell = User.create(email: 'darrellharper@email.com', password: 'password', fi
 apartment = Category.create(name: "Apartment")
 condo = Category.create(name: "Condo")
 single_family_home = Category.create(name: "Single Family Home")
+
+Listing.create(user: rick, title: "Beautiful Apartment!", description: "Wonderful apartmentment located right next to the beach! 5 miles to all tourist locations!", price: 80, bedroom: 1, bathroom: 1, address: "555 Queens Ln", city: "Miami", state: "FL", category: apartment, img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")
+Listing.create(user: rick , title: "Awesome Condo", description: "This is a newly built condo built in 2020. Amazing views at all angles.", price: 100, bedroom: "2", bathroom: "1", address: "1458 Lauren Rd", city: "Houston", state: "TX", category: condo, img: "https://images.unsplash.com/photo-1564834552305-aea63611ff08?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80")
