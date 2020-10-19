@@ -45,3 +45,12 @@
   </div>
 </div>   
 </div>
+
+<%= form_for @booking do |f| %>
+    <%= f.hidden_field :user_id, value: @listing.user.id %>
+      <%= f.hidden_field :guest_id, value: current_guest.id %>
+      <%= f.hidden_field :listing_id, value: @listing.id %>
+      <%= f.label :comments, "Additional comments to the Host" %>
+      <%= f.text_area :comments %>
+      <%= f.submit %>
+<% end %>
