@@ -4,5 +4,6 @@ class Guest < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :bookings, through: :listings       
+  has_many :bookings
+  has_many :hosts, through: :bookings
 end
