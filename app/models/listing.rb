@@ -3,6 +3,7 @@ class Listing < ApplicationRecord
     belongs_to :category
     has_many :bookings
     has_many :guests, through: :bookings
+    accepts_nested_attributes_for :category
 
     def self.search(params)
         where("LOWER(title) LIKE :search OR LOWER(description) LIKE :search", search: "%#{params}%")    

@@ -3,6 +3,7 @@ class ListingsController < ApplicationController
   def new
     if user_signed_in?
       @listing = Listing.new
+      @listing.build_category
     else
       flash[:notice] = "You must be logged in to create a new listing!" 
        redirect_to root_path
@@ -86,7 +87,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:title, :description, :price, :bedroom, :bathroom, :address, :city, :state, :category_id, :booking_attributes)  
+    params.require(:listing).permit(:title, :description, :price, :bedroom, :bathroom, :address, :city, :state, :category_id, category_attributes: [:name])  
   end  
 
   def booking_params
