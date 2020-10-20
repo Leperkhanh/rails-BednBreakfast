@@ -23,6 +23,9 @@ class ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
+    if params[:q]
+      @listings = @listings.search(params[:q].downcase)
+    end
   end
 
   def show
