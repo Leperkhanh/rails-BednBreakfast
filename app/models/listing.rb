@@ -1,6 +1,9 @@
 class Listing < ApplicationRecord
     belongs_to :user
     belongs_to :category
+    has_many :bookings
+    has_many :guests, through: :bookings
+    accepts_nested_attributes_for :bookings
 
     def host_name
         self.user.first_name + " " + self.user.last_name

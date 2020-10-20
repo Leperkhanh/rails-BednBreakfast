@@ -29,7 +29,6 @@ class ListingsController < ApplicationController
     @listing = Listing.find_by(id: params[:id])
     if @listing
        @booking = Booking.new
-      render 'show'
     else
       redirect_to root_path    
     end
@@ -84,7 +83,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:title, :description, :price, :bedroom, :bathroom, :address, :city, :state, :category_id)  
+    params.require(:listing).permit(:title, :description, :price, :bedroom, :bathroom, :address, :city, :state, :category_id, :booking_attributes)  
   end  
 
   def booking_params
