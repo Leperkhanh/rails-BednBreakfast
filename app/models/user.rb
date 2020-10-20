@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :listings , dependent: :destroy
   has_many :bookings, through: :listings 
   has_many :guests, through: :listings
+  validates_presence_of :email
 end
