@@ -3,6 +3,7 @@ class Listing < ApplicationRecord
     belongs_to :category
     has_many :bookings
     has_many :guests, through: :bookings
+    validates_presence_of :title, :description, :price, :bedroom, :bathroom, :address, :city, :state
     accepts_nested_attributes_for :category
 
     def self.search(params)
