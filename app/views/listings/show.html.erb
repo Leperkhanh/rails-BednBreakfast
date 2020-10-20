@@ -63,9 +63,9 @@
                 <%= f.hidden_field :user_id, value: @listing.user.id %>
                 <%= f.hidden_field :guest_id, value: current_guest.id %>
                 <%= f.hidden_field :listing_id, value: @listing.id %>
-                <%= f.label :comments, "Additional comments to the Host" %>
-                <%= f.text_area :comments %>
-                <%= f.submit %>
+                <%= f.label :comments, "Additional comments to the Host" %> <br>
+                <%= f.text_area :comments %> <br>
+                <%= f.submit class: "btn btn-danger" %>
                 <% end %>
 
             </div>
