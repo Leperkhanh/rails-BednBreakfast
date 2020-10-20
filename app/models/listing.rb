@@ -5,7 +5,7 @@ class Listing < ApplicationRecord
     has_many :guests, through: :bookings
 
     def self.search(params)
-        where("LOWER(title) LIKE ? OR LOWER(description) LIKE ?", "%#{params}%", "%#{params}%")    
+        where("LOWER(title) LIKE :search OR LOWER(description) LIKE :search", search: "%#{params}%")    
     end
 
     def host_name
