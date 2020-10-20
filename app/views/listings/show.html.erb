@@ -12,41 +12,69 @@
 
 <div class="container mt-5 text-center" style="width: 100%;">
     <div class="card bg-light" style="width: 100%">
-  <div class="card-body">
-    <div class="row">
-        <div class="col-6">
-            <h4 class="card-title">Property Information</h4>
-        </div>
-        <div class="col-6">
-            <h4 class="card-title">Contact Information</h4>
-        </div>
-    </div>
-    <div class="row">
+        <div class="card-body">
 
-        <div class="col-6 mb-3">
-            <p class="card-text">Price/Night: $<%= @listing.price %></p>
-            <p class="card-text">No. of Bedrooms: <%= @listing.bedroom %></p>
-            <p class="card-text">No. of Bathrooms: <%= @listing.bathroom %></p>
-            <h4 class="card-title">Property Address</h4>
-            <p class="card-text">
-                <%= @listing.address %> <br>
-                <%= @listing.city %>, <%= @listing.state %>
-            </p>
-        </div>
+            <div class="row">
+                <div class="col-6">
+                    <h4 class="card-title">Property Information</h4>
+                </div>
+                <div class="col-6">
+                    <h4 class="card-title">Contact Information</h4>
+                </div>
+            </div>
 
-        <div class="col-6">
-            <p class="card-text">Host Name: <%= @listing.host_name %></p>
-            <p class="card-text">Phone Number: <%= @listing.host_phone_number %></p>
-            <p class="card-text">Email: <%= @listing.host_email %></p>
-        </div>
+            <div class="row">
 
-    </div>
-    <a href="#" class="btn btn-danger my-2 my-sm-0">Book Now</a>
-  </div>
-</div>   
+                <div class="col-6 mb-3">
+                    <p class="card-text">Price/Night: $<%= @listing.price %></p>
+                    <p class="card-text">No. of Bedrooms: <%= @listing.bedroom %></p>
+                    <p class="card-text">No. of Bathrooms: <%= @listing.bathroom %></p>
+                    <h4 class="card-title">Property Address</h4>
+                    <p class="card-text">
+                        <%= @listing.address %> <br>
+                        <%= @listing.city %>, <%= @listing.state %>
+                    </p>
+                </div>
+
+                <div class="col-6">
+                    <p class="card-text">Host Name: <%= @listing.host_name %></p>
+                    <p class="card-text">Phone Number: <%= @listing.host_phone_number %></p>
+                    <p class="card-text">Email: <%= @listing.host_email %></p>
+                </div>
+
+                </div>
+                    <a href="#" class="btn btn-danger my-2 my-sm-0">Book Now</a>
+                </div>
+        </div>    
+    </div>   
 </div>
 
-<%= form_for @booking do |f| %>
+<% if guest_signed_in? %>
+    <div class="container mt-5 text-center" style="width: 100%;">
+        <div class="card bg-light" style="width: 100%">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h4 class="card-title">Book a reservation at this location!</h4>
+                </div>
+            </div>
+            <div class="container">
+                <%= form_for @booking do |f| %>
+                <%= f.hidden_field :user_id, value: @listing.user.id %>
+                <%= f.hidden_field :guest_id, value: current_guest.id %>
+                <%= f.hidden_field :listing_id, value: @listing.id %>
+                <%= f.label :comments, "Additional comments to the Host" %>
+                <%= f.text_area :comments %>
+                <%= f.hidden_field_tag :authenticity_token, form_authenticity_token %>
+                <%= link_to 'Book Now', bookings_path, class: "btn btn-danger", method: :post %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    </div>
+<% end %>
+
+<%= form_for @booking :authenticity_token => true do |f| %>
     <%= f.hidden_field :user_id, value: @listing.user.id %>
       <%= f.hidden_field :guest_id, value: current_guest.id %>
       <%= f.hidden_field :listing_id, value: @listing.id %>
