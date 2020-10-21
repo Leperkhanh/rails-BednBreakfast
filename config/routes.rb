@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
   resources :bookings
-  get 'category/index'
-  get 'category/show'
-  get 'category/new'
-  get 'category/create'
   root to: 'static#home'
   get 'static/home'
   get 'static/signin'
@@ -15,5 +11,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] 
   resources :guests, only: [:index, :show] 
   resources :listings
+  resources :category
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
