@@ -32,6 +32,11 @@ gem 'pry'
 # gem 'image_processing', '~> 1.2'
 # Search Bar Gem
 gem 'sunspot_rails'
+gem 'omniauth'
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'omniauth-google-oauth2'
+gem 'dotenv-rails'
+gem 'activerecord-session_store'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
