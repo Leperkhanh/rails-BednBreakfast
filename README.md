@@ -10,7 +10,7 @@ A user may sign up as a host or guest. Only and host can use omniauth to sign up
 
 When first starting the application, run bundle install to install all the gems and dependencies. There is seed data that can be used as test data. You can get all the seed data into the database by running rails db:seed. Developer must sign up for google developer services and add the following keys to .env in order for omniauth to work properly.
 
-OOGLE_CLIENT_ID=<yourClientKey>
+OOGLE_CLIENT_ID=<yourClientKey>\
 GOOGLE_CLIENT_SECRET=<yourClientSecet>
 
 ## Contributing
