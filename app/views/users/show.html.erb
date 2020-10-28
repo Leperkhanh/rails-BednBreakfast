@@ -2,17 +2,9 @@
     <h1>My Account Page</h1>
 </div>
 
-<div>
-    <% @listings.each do | listing | %>
-        <div class="container mb-5 text-center" style="width 75%;">
-            <div class="card" style="width: 100%;">
-                <%= image_tag(listing.img, :alt => "Card image cap", class: "card-img-top") %>
-                <div class="card-body">
-                    <h5 class="card-title alight-center"><%= link_to listing.title, listing_path(listing) %></h5>
-                    <p class="card-text text-center"><%= listing.description %></p>
-                    <%= link_to 'View Listing', listing_path(listing), class:"btn btn-primary" %>
-                </div>
-            </div>
-        </div>
-    <% end %>
+<div class="container">
+    <p>
+        View  all <%= @user.email %> listings:  <%= link_to "View All", user_listings_path(@user) %>
+    </p>
 </div>
+
