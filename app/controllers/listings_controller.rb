@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
   def new
     if user_signed_in?
-      @listing = Listing.new
+      @listing = current_user.listings.build
       @listing.build_category
     else
       flash[:notice] = "You must be logged in to create a new listing!"
