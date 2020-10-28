@@ -1,24 +1,19 @@
-# README
+# MovieGuru
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to the Bed-N-Breakfast where a host and guest can arrange a rental of property.
 
-Things you may want to cover:
+## Usage
 
-* Ruby version
+A user may sign up as a host or guest. Only and host can use omniauth to sign up for account. You must be a host in order to create a listing. Once a listing is created, a guest may create a booking with the listing. Listings can only be deleted by the listing's user. A booking can not be deleted, so make sure you want to book before proceeding. During the booking procress, the guest may add additional comments to the host.
 
-* System dependencies
+## Development
 
-* Configuration
+When first starting the application, run bundle install to install all the gems and dependencies. There is seed data that can be used as test data. You can get all the seed data into the database by running rails db:seed.
 
-* Database creation
+## Contributing
 
-* Database initialization
+Bug reports and pull requests are welcome on GitHub at https://github.com/Leperkhanh/rails-BednBreakfast.
 
-* How to run the test suite
+## License
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+https://github.com/Leperkhanh/rails-BednBreakfast/blob/main/LICENSE
