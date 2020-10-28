@@ -4,7 +4,7 @@ class Guest < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :hosts, through: :bookings
   validates_presence_of :email
 end
