@@ -33,11 +33,16 @@ class ListingsController < ApplicationController
   end
 
   def show
-    @listing = Listing.find_by(id: params[:id])
-    if @listing
-      @booking = Booking.new
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      @listing = Listing.find_by(id: params[:id])
     else
-      redirect_to root_path
+      @listing = Listing.find_by(id: params[:id])
+      if @listing
+        @booking = Booking.new
+      else
+        redirect_to root_path
+      end
     end
   end
 
