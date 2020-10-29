@@ -1,8 +1,8 @@
 <div class="container mt-5 mb-5 text-center">
     <h1><%= @listing.title %></h1>
-    <% if @listing.user == current_user%>
-        <%= link_to 'Edit Listing', edit_listing_path(@listing), class:"btn btn-primary mr-2" %>
-        <%= link_to 'Delete Listing', listing_path(@listing), class:"btn btn-danger" ,method: :delete %>
+    <% if @listing.user == current_user %>
+        <%= link_to "Edit Listing", edit_listing_path(@listing), class: "btn btn-primary mr-2" %>
+        <%= link_to "Delete Listing", listing_path(@listing), class: "btn btn-danger", method: :delete %>
     <% end %>
 </div>
 
@@ -38,6 +38,7 @@
 
                 <div class="col-6">
                     <p class="card-text">Email: <%= @listing.host_email %></p>
+                    <p class="card-text">View all listings from this host:  <%= link_to "View All", user_listings_path %></p>
                 </div>
         </div>    
     </div>   
