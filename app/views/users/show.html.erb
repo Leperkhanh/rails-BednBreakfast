@@ -2,9 +2,15 @@
     <h1>My Account Page</h1>
 </div>
 
-<div class="container">
-    <p>
-        View  all <%= @user.email %> listings:  <%= link_to "View All", user_listings_path(@user) %>
-    </p>
+<div class="container text-center">
+    <div class="col-12">
+        <div class="card bg-light text-center" style="width: 100%;">
+            <div class="card-body text-center">
+                <p>
+                    View  all <%= @user.email %> listings:  <%= link_to "View All", user_listings_path(@user) %>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
 
