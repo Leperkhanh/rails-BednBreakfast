@@ -16,7 +16,7 @@
             <div class="card" style="width: 100%;">
                 <%= image_tag(listing.img, :alt => "Card image cap", class: "card-img-top") %>
                 <div class="card-body">
-                    <h5 class="card-title alight-center"><%= link_to listing.title, listing_path(listing) %></h5>
+                    <h5 class="card-title alight-center"><%= listing.title %></h5>
                     <p class="card-text text-center"><%= listing.description %></p>
                     <%= link_to "View Listing", user_listing_path(listing.user, listing), class: "btn btn-primary" %>
                 </div>
