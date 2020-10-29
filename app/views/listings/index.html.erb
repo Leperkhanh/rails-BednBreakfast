@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <h5 class="card-title alight-center"><%= link_to listing.title, listing_path(listing) %></h5>
                     <p class="card-text text-center"><%= listing.description %></p>
-                    <%= link_to "View Listing", user_listing_path(@user, listing), class: "btn btn-primary" %>
+                    <%= link_to "View Listing", user_listing_path(listing.user, listing), class: "btn btn-primary" %>
                 </div>
             </div>
         </div>
