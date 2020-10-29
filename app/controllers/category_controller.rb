@@ -5,6 +5,7 @@ class CategoryController < ApplicationController
 
   def show
     @category = Category.find_by(id: params[:id])
+    @listing = @category.listings
   end
 
   def new
@@ -19,5 +20,5 @@ class CategoryController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name)
-  end  
+  end
 end
